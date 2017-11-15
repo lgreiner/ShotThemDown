@@ -25,10 +25,10 @@ function init()
     noGround = [];
     ground = new Ground(0xffffff, WIDTH, HEIGHT, 10);
     
-    player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0);
+    player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0, 3);
     scene.add(player1.graphic);
 
-    enemy = new Player("enemy", 0xffff00, new THREE.Vector2(50, 0), 0);
+    enemy = new Player("enemy", 0xffff00, new THREE.Vector2(50, 0), 0, 3);
     scene.add(enemy.graphic);
 
     light1 = new Light("sun", 0xffffff, "0,0,340");
