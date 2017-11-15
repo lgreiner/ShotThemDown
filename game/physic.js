@@ -14,5 +14,15 @@ function update()
         player1.decelerate(moveDistance);
 
     player1.move();
+    enemy.accelerate(moveDistance);
+    if (enemy.graphic.position.x <= -300) {
+        enemy.accelerate(moveDistance);
+    } else
+    if (enemy.graphic.position.x >= 300) {
+        enemy.decelerate(moveDistance);
+    }
+
+    enemy.move();
+
     controls.update();
 }

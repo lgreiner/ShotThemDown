@@ -7,21 +7,19 @@ var Player = function(name, color, position, direction) {
     this.direction = direction;
     this.speed = 0;
     this.enemy = false;
-
     this.color;
 
 
     if (name == 'enemy') {
         this.enemy = true;
         this.material = new THREE.MeshLambertMaterial({
-            color: 0x000000
+            color: 0xffffff
             });
     } else {
         this.material = new THREE.MeshLambertMaterial({
             color: color
             });
     }
-
 
     bumperMesh = new THREE.Mesh(new THREE.CylinderGeometry(0, 10, 10, 12, 12, false), this.materialBumper);
     bumperMesh.rotation.x = Math.PI / 2 ;
@@ -47,7 +45,7 @@ Player.prototype.accelerate = function (distance) {
 };
 
 Player.prototype.dead = function () {
-    this.graphic.position.z = this.graphic.position.z-0.1;
+        this.graphic.position.z = this.graphic.position.z-0.1;
         //Nettoyage de la div container
         $("#container").html("");
         jQuery('#'+this.name+' >.life').text("Tu es mort !");

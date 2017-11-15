@@ -47,11 +47,15 @@ function bullet_collision()
         if (player1.bullets[i].position.x >= enemy.graphic.position.x - 10 &&
             player1.bullets[i].position.x <= enemy.graphic.position.x + 10 &&
             player1.bullets[i].position.y >= enemy.graphic.position.y - 10 &&
-            player1.bullets[i].position.y <=  enemy.graphic.position.y + 10)
+            player1.bullets[i].position.y <=  enemy.graphic.position.y + 10 && 
+            player1.bullets[i].position.z >=  enemy.graphic.position.z - 10 &&
+            player1.bullets[i].position.z <=  enemy.graphic.position.z + 10)
         {
             scene.remove(player1.bullets[i]);
             player1.bullets.splice(i, 1);
             i--;
+            enemy.graphic.position.z = enemy.graphic.position.z-20;
+            scene.remove(enemy.graphic);
         } else if (Math.abs(player1.bullets[i].position.x) >= WIDTH / 2 ||
             Math.abs(player1.bullets[i].position.y) >= HEIGHT / 2)
         {
