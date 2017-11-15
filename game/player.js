@@ -6,10 +6,22 @@ var Player = function(name, color, position, direction) {
     this.bullets = new Array();
     this.direction = direction;
     this.speed = 0;
+    this.enemy = false;
 
-    this.material = new THREE.MeshLambertMaterial({
-        color: color,
-        });
+    this.color;
+
+
+    if (name == 'enemy') {
+        this.enemy = true;
+        this.material = new THREE.MeshLambertMaterial({
+            color: 0x000000
+            });
+    } else {
+        this.material = new THREE.MeshLambertMaterial({
+            color: color
+            });
+    }
+
 
     bumperMesh = new THREE.Mesh(new THREE.CylinderGeometry(0, 10, 10, 12, 12, false), this.materialBumper);
     bumperMesh.rotation.x = Math.PI / 2 ;
@@ -56,8 +68,8 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), -angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
